@@ -1,0 +1,6 @@
+{
+  "name": "HARMONIA — International Hackathon Portal",
+  "description": "Official registration, team formation, and submission portal for HARMONIA: International Hackathon for a More Inclusive and Connected World, organized by RIT, IEEE, and iDataMind.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

@@ -1,0 +1,85 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() >= 1 && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    function incoming() {
+      return request.resource.data;
+    }
+
+    function existing() {
+      return resource.data;
+    }
+
+    function isValidRegistration(data) {
+      return data.keys().hasAll([
+        'id',
+        'ownerId',
+        'teamName',
+        'leaderName',
+        'leaderEmail',
+        'institution',
+        'trackId',
+        'projectTitle',
+        'abstract',
+        'memberCount',
+        'createdAt'
+      ]) &&
+      data.keys().hasOnly([
+        'id',
+        'ownerId',
+        'teamName',
+        'leaderName',
+        'leaderEmail',
+        'institution',
+        'ieeeMemberId',
+        'trackId',
+        'projectTitle',
+        'abstract',
+        'memberCount',
+        'createdAt'
+      ]) &&
+      data.id is string && data.id.size() >= 1 && data.id.size() <= 128 &&
+      data.ownerId is string && data.ownerId == request.auth.uid && data.ownerId.size() <= 128 &&
+      data.teamName is string && data.teamName.size() >= 3 && data.teamName.size() <= 80 &&
+      data.leaderName is string && data.leaderName.size() >= 2 && data.leaderName.size() <= 80 &&
+      data.leaderEmail is string && data.leaderEmail.size() >= 5 && data.leaderEmail.size() <= 120 &&
+      data.institution is string && data.institution.size() >= 3 && data.institution.size() <= 120 &&
+      data.trackId is string && data.trackId in ['linguaverse', 'abilityx', 'roots', 'flowforge', 'iotverse'] &&
+      data.projectTitle is string && data.projectTitle.size() >= 6 && data.projectTitle.size() <= 140 &&
+      data.abstract is string && data.abstract.size() >= 20 && data.abstract.size() <= 1000 &&
+      data.memberCount is int && data.memberCount >= 1 && data.memberCount <= 4 &&
+      data.createdAt is string && data.createdAt.size() <= 40;
+    }
+
+    match /registrations/{registrationId} {
+      allow get: if isSignedIn() && isValidId(registrationId) && existing().ownerId == request.auth.uid;
+      allow list: if isSignedIn() && resource.data.ownerId == request.auth.uid;
+      allow create: if isSignedIn() &&
+        request.auth.token.email_verified == true &&
+        isValidId(registrationId) &&
+        incoming().id == registrationId &&
+        isValidRegistration(incoming());
+      allow update: if isSignedIn() &&
+        request.auth.token.email_verified == true &&
+        isValidId(registrationId) &&
+        isValidRegistration(incoming()) &&
+        existing().ownerId == request.auth.uid &&
+        incoming().ownerId == existing().ownerId &&
+        incoming().id == existing().id &&
+        incoming().createdAt == existing().createdAt &&
+        incoming().diff(existing()).affectedKeys().hasOnly(['teamName', 'projectTitle', 'abstract', 'memberCount', 'trackId']);
+      allow delete: if isSignedIn() && isValidId(registrationId) && existing().ownerId == request.auth.uid;
+    }
+  }
+}

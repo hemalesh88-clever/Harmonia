@@ -1,0 +1,93 @@
+{
+  "entities": {
+    "TeamRegistration": {
+      "title": "TeamRegistration",
+      "description": "A hackathon team registration submitted by a verified participant for HARMONIA.",
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "string",
+          "description": "Unique registration document identifier",
+          "maxLength": 128,
+          "pattern": "^[a-zA-Z0-9_\\-]+$"
+        },
+        "ownerId": {
+          "type": "string",
+          "description": "Firebase Auth UID of the team lead",
+          "maxLength": 128
+        },
+        "teamName": {
+          "type": "string",
+          "description": "Name of the participating team",
+          "minLength": 3,
+          "maxLength": 80
+        },
+        "leaderName": {
+          "type": "string",
+          "description": "Full name of the team lead",
+          "minLength": 2,
+          "maxLength": 80
+        },
+        "leaderEmail": {
+          "type": "string",
+          "format": "email",
+          "description": "Email address of the team lead",
+          "maxLength": 120
+        },
+        "institution": {
+          "type": "string",
+          "description": "University or college name",
+          "minLength": 3,
+          "maxLength": 120
+        },
+        "trackId": {
+          "type": "string",
+          "enum": ["linguaverse", "abilityx", "roots", "flowforge", "iotverse"],
+          "description": "Selected hackathon track"
+        },
+        "projectTitle": {
+          "type": "string",
+          "description": "Title of the proposed hackathon project",
+          "minLength": 6,
+          "maxLength": 140
+        },
+        "abstract": {
+          "type": "string",
+          "description": "Project abstract and inclusion impact",
+          "minLength": 20,
+          "maxLength": 1000
+        },
+        "memberCount": {
+          "type": "number",
+          "description": "Number of team members (1 to 4)"
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "ISO timestamp of registration creation",
+          "maxLength": 40
+        }
+      },
+      "required": [
+        "id",
+        "ownerId",
+        "teamName",
+        "leaderName",
+        "leaderEmail",
+        "institution",
+        "trackId",
+        "projectTitle",
+        "abstract",
+        "memberCount",
+        "createdAt"
+      ]
+    }
+  },
+  "firestore": {
+    "/registrations/{registrationId}": {
+      "schema": {
+        "$ref": "#/entities/TeamRegistration"
+      },
+      "description": "Stores verified team registrations for HARMONIA."
+    }
+  }
+}

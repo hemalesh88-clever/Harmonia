@@ -1,0 +1,2342 @@
+# HARMONIA 2027 — ULTIMATE COMPLETE WEBSITE DEVELOPMENT PROMPT
+
+## International Hackathon | Ideas Beyond Borders
+
+**ROLE:** Act as a senior full-stack engineer, UI/UX implementation specialist, database architect, Firebase developer, security engineer and quality assurance tester.
+
+Your task is to build a complete, fully functional, deployment-ready web application for HARMONIA 2027.
+
+This project must be developed using the supplied website screenshot as its original design reference.
+
+The application must include:
+- Public event website
+- Google authentication
+- Participant registration
+- Team management
+- Manual mentor-name entry
+- Theme selection
+- Registration confirmation
+- Participant dashboard
+- Secure organizer dashboard
+- Database integration
+- Registration analytics
+- Data export
+- Email notifications
+- Responsive design
+- Security and testing
+
+**DO NOT STOP AFTER CREATING THE FRONTEND. IMPLEMENT THE ACTUAL FUNCTIONALITY.**
+
+---
+
+# SECTION 1 — ABSOLUTE DESIGN PRESERVATION
+
+## 1.1 The uploaded screenshot is the final design reference
+
+The HARMONIA website screenshot supplied with this project is the design I want.
+
+You must reproduce the existing website as closely as possible.
+
+Do not redesign it.
+
+Do not create a new homepage based on your own preferences.
+
+Do not replace the original design with a generic hackathon template.
+
+### Preserve every existing visual element
+
+- Header arrangement
+- Navigation placement
+- Original logo positions
+- Hero section layout
+- HARMONIA 2027 title
+- Original typography
+- Font hierarchy
+- Text alignment
+- Button shapes
+- Button positions
+- Original background illustration
+- Background scenery
+- Theme cards
+- Theme card colors
+- Statistics section
+- Section spacing
+- Content alignment
+- Overall proportions
+- Existing visual identity
+
+If the screenshot contains a particular illustration, use that same supplied image asset whenever available.
+
+Do not replace it with another AI-generated illustration.
+
+## 1.2 Background preservation
+
+The original background and scenery must remain.
+
+Do not replace the background with:
+
+- Random gradient backgrounds
+- Different landscape illustrations
+- Unrelated 3D objects
+- Abstract shapes
+- Unnecessary floating elements
+- New AI-generated scenery
+
+Only perform minimal refinements if absolutely necessary.
+
+The background must retain the original appearance and composition.
+
+## 1.3 Color palette preservation
+
+Maintain the exact existing HARMONIA color palette.
+
+The existing colors include:
+
+- Purple
+- Blue
+- Warm orange
+- Peach
+- Green
+- Neutral background tones
+
+Do not introduce a new color palette.
+
+Do not change existing theme-card colors.
+
+Do not turn the website into a dark cyberpunk or neon design.
+
+## 1.4 Typography preservation
+
+Keep the original font style and hierarchy.
+
+Preserve:
+
+- Main event heading size
+- Section headings
+- Body text hierarchy
+- Button typography
+- Navigation typography
+
+Do not randomly introduce new fonts.
+
+## 1.5 Functional additions without redesign
+
+You may add functionality and additional pages.
+
+However, all additional pages must follow the same original design language.
+
+The registration form, authentication page and dashboards may have layouts appropriate to their functionality, but they must look like they belong to the same HARMONIA website.
+
+**Final design rule: Functionality can change. The original homepage design must not be redesigned.**
+
+---
+
+# SECTION 2 — OFFICIAL EVENT IDENTITY
+
+**Event Name:** HARMONIA 2027
+
+**Tagline:** Ideas Beyond Borders
+
+**Event Type:** 24-Hour International Hackathon
+
+**Institution:** Rajalakshmi Institute of Technology
+
+Create a consistent event identity throughout the application.
+
+Use HARMONIA 2027 wherever the event name needs to appear.
+
+Use the original event branding and do not invent a new logo if an official HARMONIA logo has been supplied.
+
+---
+
+# SECTION 3 — OFFICIAL ORGANIZATION LOGOS
+
+Three official organization logos must be included.
+
+1. Rajalakshmi Institute of Technology (RIT)
+2. iDataMind
+3. IEEE
+
+## 3.1 Logo assets
+
+Use the actual supplied RIT image.
+
+Use the actual supplied iDataMind image.
+
+Use the official IEEE logo asset.
+
+If the IEEE image has not been included in the project assets, request the official asset or use a clearly identified placeholder until it is supplied.
+
+Never generate an imitation of an official logo.
+
+## 3.2 Header
+
+Integrate the logos into the existing screenshot's header arrangement.
+
+Preserve the original header structure.
+
+Make sure:
+
+- Logos have their original proportions.
+- No logo is stretched.
+- No logo is cropped.
+- Logos are sufficiently visible.
+- Logos do not overpower HARMONIA 2027.
+- Spacing is consistent.
+
+Do not rearrange the existing header unnecessarily.
+
+## 3.3 Footer
+
+Include an organizational branding section:
+
+**Organized & Supported By**
+
+Display all three official logos.
+
+Use the correct organizational relationship for each logo. Do not claim that an organization is a sponsor, organizer or partner unless that relationship has been confirmed.
+
+## 3.4 Mobile logos
+
+Arrange the logos appropriately on smaller screens without distortion or horizontal overflow.
+
+---
+
+# SECTION 4 — TECHNOLOGY ARCHITECTURE
+
+Build a real full-stack website.
+
+Preferred stack:
+
+### Frontend
+- React or Next.js
+- TypeScript
+- Modern component architecture
+- Responsive CSS
+
+### Backend
+- Secure server-side APIs
+- Firebase Cloud Functions or equivalent server-side execution
+
+### Authentication
+- Firebase Authentication
+- Google Sign-In
+
+### Database
+- Firebase Cloud Firestore
+
+### Additional services
+- Email notification service
+- CSV export
+- Excel export
+- Firebase App Check where appropriate
+- Firebase Local Emulator Suite for security testing
+
+If the existing project already contains working code, inspect the project before modifying it.
+
+Do not delete or replace existing working functionality without a technical reason.
+
+Maintain a clean and maintainable architecture.
+
+---
+
+# SECTION 5 — COMPLETE WEBSITE STRUCTURE
+
+Create the following pages:
+
+1. Home
+2. About Event
+3. About Us
+4. Themes
+5. Theme Details
+6. Timeline
+7. Prizes
+8. FAQ
+9. Contact
+10. Google Authentication
+11. Registration
+12. Registration Review
+13. Registration Success
+14. Participant Dashboard
+15. Participant Profile
+16. Admin Login
+17. Admin Dashboard
+18. Registration Management
+19. Registration Details
+20. Event Content Management
+21. Mentor Name Analytics
+22. Admin Settings
+
+Do not place every function on one page.
+
+Use proper routing and logical navigation.
+
+---
+
+# SECTION 6 — HOMEPAGE HEADER
+
+Preserve the original header layout.
+
+Include the existing:
+
+- RIT branding
+- HARMONIA identity
+- iDataMind logo
+- IEEE logo
+
+Navigation:
+
+- Home
+- About
+- Themes
+- Timeline
+- Prizes
+- FAQ
+- Contact
+
+Primary button:
+
+**REGISTER NOW ↗**
+
+The Register Now button must remain visually prominent.
+
+Make the navigation functional.
+
+Use a responsive mobile navigation without changing the desktop design unnecessarily.
+
+---
+
+# SECTION 7 — HERO SECTION
+
+Maintain the original hero design and background.
+
+Display:
+
+INTERNATIONAL HACKATHON
+
+# HARMONIA 2027
+
+### IDEAS BEYOND BORDERS
+
+Supporting text:
+
+"Bring ideas to life, collaborate across boundaries and create technology-driven solutions for a better tomorrow."
+
+Primary button:
+
+**Register Now ↗**
+
+Secondary button:
+
+**Explore Themes**
+
+The event title must remain the strongest visual element.
+
+Do not replace the existing illustration, scenery or visual composition.
+
+---
+
+# SECTION 8 — EVENT STATISTICS
+
+Preserve the original statistics section.
+
+Include:
+
+- Total Participants
+- Prize Pool
+- Hackathon Duration
+- Number of Themes
+
+Use real database information wherever applicable.
+
+Known event information:
+
+- Duration: 24 Hours
+- Themes: 5
+
+Unknown values such as participant count and prize pool must not be fabricated.
+
+If statistics are displayed dynamically, retrieve them from actual data.
+
+---
+
+# SECTION 9 — ABOUT EVENT
+
+Title:
+
+**About HARMONIA 2027**
+
+Description:
+
+HARMONIA 2027 is a 24-hour international hackathon that brings together students, developers, innovators and technology enthusiasts to collaborate, develop creative ideas and build meaningful technology solutions for real-world challenges.
+
+The event promotes innovation, inclusivity, collaboration and practical problem-solving.
+
+Create content blocks for:
+
+**Innovation**
+
+Encourage participants to explore new technologies and creative approaches.
+
+**Collaboration**
+
+Bring people together to develop solutions as teams.
+
+**Creativity**
+
+Encourage original thinking and experimentation.
+
+**Impact**
+
+Focus on solutions that can create meaningful real-world value.
+
+Keep the section visually consistent with the original screenshot.
+
+---
+
+# SECTION 10 — ABOUT US
+
+Title:
+
+**About Us**
+
+Display:
+
+Rajalakshmi Institute of Technology.
+
+Include an editable institutional introduction and information about the HARMONIA organizing team.
+
+Use official information supplied by the organizers.
+
+Do not invent:
+
+- Institutional rankings
+- Achievements
+- Awards
+- Statistics
+- Accreditations
+
+---
+
+# SECTION 11 — FIVE OFFICIAL HACKATHON THEMES
+
+There must be exactly five official themes.
+
+Preserve the original theme card designs and colors.
+
+## THEME 01 — LINGUAVERSE
+
+**AI for Every Language**
+
+Description:
+
+Develop innovative solutions that use artificial intelligence to break language barriers and improve communication.
+
+Focus areas:
+
+- Multilingual AI
+- Language translation
+- Natural language processing
+- Language accessibility
+- Speech technologies
+- Cross-language communication
+
+## THEME 02 — ABILITYX
+
+**Technology Without Barriers**
+
+Description:
+
+Develop inclusive technology that improves accessibility and creates opportunities for people with different abilities.
+
+Focus areas:
+
+- Assistive technology
+- Accessibility
+- Inclusive design
+- Accessible applications
+- Communication support
+- Smart assistance
+
+## THEME 03 — ROOTS TO FUTURES
+
+**Innovating for Communities**
+
+Description:
+
+Create technology-driven solutions that address community challenges and promote sustainable development.
+
+Focus areas:
+
+- Community development
+- Rural innovation
+- Education
+- Sustainable development
+- Social impact
+- Community accessibility
+
+## THEME 04 — FLOWFORGE
+
+**Intelligent Logistics & Supply Chains**
+
+Description:
+
+Build intelligent systems that improve logistics, transportation and supply-chain operations.
+
+Focus areas:
+
+- Logistics
+- Transportation
+- Supply-chain optimization
+- Automation
+- Smart distribution
+- Resource management
+
+## THEME 05 — IOTVERSE
+
+**Connecting the Intelligent World**
+
+Description:
+
+Develop connected technologies that enable smarter environments and intelligent infrastructure.
+
+Focus areas:
+
+- Internet of Things
+- Sensors
+- Smart devices
+- Connected systems
+- Smart environments
+- Intelligent infrastructure
+
+## 11.1 Theme interaction
+
+Every theme card must include:
+
+- Theme number
+- Theme name
+- Tagline
+- Short description
+- Relevant icon
+- Explore Theme action
+
+When a participant selects a theme for registration, clearly highlight it.
+
+Only one theme may be selected per team registration.
+
+Save the selected theme to Firestore.
+
+## 11.2 Theme detail page
+
+When a visitor clicks Explore Theme, display:
+
+- Theme name
+- Full description
+- Focus areas
+- Example problem domains
+- Potential solution areas
+- Suggested technology categories
+- Register with this Theme button
+
+Do not force theme selection before Google authentication. If a visitor chooses a theme before signing in, preserve the selection and carry it into registration after authentication.
+
+---
+
+# SECTION 12 — EVENT TIMELINE
+
+Create a proper event timeline.
+
+Stages:
+
+1. Registration Opens
+2. Registration Closes
+3. Team Formation
+4. Theme Selection
+5. Hackathon Begins
+6. Mentoring
+7. Project Development
+8. Project Submission
+9. Evaluation
+10. Winners Announcement
+
+Each timeline item should support:
+
+- Event name
+- Date
+- Time
+- Description
+- Status
+
+Dates and times must be editable by authorized administrators.
+
+Use the event's configured timezone consistently.
+
+Do not invent dates.
+
+---
+
+# SECTION 13 — PRIZES
+
+Create a professional prize section.
+
+Include:
+
+- First Prize
+- Second Prize
+- Third Prize
+- Special Awards
+
+Use the existing website's design language.
+
+Do not invent prize amounts.
+
+Display "To Be Announced" until the organizer supplies the values.
+
+Allow authorized administrators to update:
+
+- Prize title
+- Prize amount
+- Description
+- Award category
+- Active/inactive status
+
+---
+
+# SECTION 14 — FAQ
+
+Create a functional accordion.
+
+Include:
+
+1. What is HARMONIA 2027?
+2. Who can participate?
+3. How many members can a team have?
+4. Can I participate individually?
+5. Can team members belong to different colleges?
+6. How do I register?
+7. Is Google authentication mandatory?
+8. How do I select a theme?
+9. How do I enter my mentor's name?
+10. Is registration free?
+11. Which technologies can be used?
+12. Will mentors be available?
+13. How will projects be evaluated?
+14. What are the submission requirements?
+15. Can I edit my registration?
+16. How do I check registration status?
+17. Can I download my registration confirmation?
+18. What happens if registration closes?
+
+Important answer:
+
+A team may have a minimum of one participant and a maximum of four participants.
+
+Participants must manually enter their mentor's name during registration.
+
+Make all FAQ answers editable through the admin dashboard.
+
+---
+
+# SECTION 15 — CONTACT
+
+Create two separate sections.
+
+## Faculty Coordinators
+
+Display:
+
+- Faculty name
+- Designation
+- Email
+- Contact number
+
+## Event Coordinators
+
+Display:
+
+- Coordinator name
+- Email
+- Contact number
+
+Actions:
+
+- Send Email
+- Call
+
+Only use confirmed contact information.
+
+Use editable placeholders until the organizer supplies actual details.
+
+---
+
+# SECTION 16 — GOOGLE AUTHENTICATION
+
+Google authentication is mandatory for participant registration.
+
+## 16.1 Registration entry
+
+When the visitor clicks Register Now:
+
+Open a dedicated authentication page.
+
+Display:
+
+**Register for HARMONIA 2027**
+
+"Sign in with your Google account to continue."
+
+Button:
+
+**Continue with Google**
+
+Use real Firebase Authentication with the Google provider.
+
+Do not create a simulated Google login.
+
+Do not ask users to enter their Google password into the HARMONIA website.
+
+## 16.2 Authentication information
+
+After successful authentication, retrieve:
+
+- Firebase UID
+- Google display name
+- Google email
+- Google profile picture
+- Email verification status
+
+Display the signed-in account clearly.
+
+Example:
+
+**Signed in as**
+
+Google profile picture
+
+Participant name
+
+Participant email
+
+**Google Account Verified**
+
+The Google email must automatically populate the registration form.
+
+Make the email field read-only.
+
+Allow the participant to edit the official participant name separately.
+
+## 16.3 Change Google account
+
+Add a Change Account option.
+
+When selected:
+
+- Ask for confirmation if registration details have been entered.
+- Preserve any unsaved form information where practical.
+- Sign out from the current HARMONIA session.
+- Allow the participant to authenticate with another Google account.
+
+Do not silently discard form data.
+
+## 16.4 Existing registration detection
+
+Check the authenticated Firebase UID.
+
+If the account has no registration:
+
+Open the registration process.
+
+If it already has a registration:
+
+Display the existing registration.
+
+Prevent accidental duplicate submissions.
+
+Use the UID as the primary identity, not just the email address.
+
+## 16.5 Authentication error handling
+
+Handle:
+
+- Popup closed
+- Authentication cancelled
+- Unauthorized domain
+- Network failure
+- Google account unavailable
+- Session expired
+- Authentication provider error
+
+Display understandable messages.
+
+---
+
+# SECTION 17 — COMPLETE REGISTRATION PROCESS
+
+Build a multi-step form.
+
+Progress indicator:
+
+1. Account
+2. Participant Details
+3. Theme
+4. Mentor
+5. Team
+6. Review
+7. Complete
+
+Requirements:
+
+- Save form state between steps.
+- Allow previous and next navigation.
+- Validate each step.
+- Highlight the current step.
+- Show completed steps.
+- Prevent progression when mandatory information is invalid.
+- Do not lose entered data when navigating backwards.
+- Support mobile screens.
+
+---
+
+# SECTION 18 — PARTICIPANT INFORMATION
+
+Collect:
+
+### Full Name
+
+Required.
+
+Automatically initialize using the Google display name.
+
+Allow editing because the participant may need to enter their official full name.
+
+### Email Address
+
+Automatically populated from Google.
+
+Read-only.
+
+### Contact Number
+
+Required.
+
+Support Indian mobile number formats:
+
+- 10-digit mobile number
+- Optional +91 country prefix
+
+Normalize numbers before saving.
+
+### College / Institution
+
+Required.
+
+### Department
+
+Required.
+
+### Year of Study
+
+Required.
+
+Allow organizer-approved year options to be configured.
+
+Example:
+
+- First Year
+- Second Year
+- Third Year
+- Fourth Year
+- Other
+
+If Other is selected, display a text field.
+
+### Optional Profile Picture
+
+Use the Google profile picture by default.
+
+Do not make profile photos mandatory.
+
+---
+
+# SECTION 19 — THEME SELECTION
+
+Show all five official themes.
+
+The participant must select exactly one.
+
+Allow changing the selection before final submission.
+
+Display the selected theme in:
+
+- Review page
+- Registration confirmation
+- Participant dashboard
+- Admin dashboard
+- Exported records
+
+---
+
+# SECTION 20 — MENTOR NAME: MANUAL ENTRY ONLY
+
+**THIS IS A STRICT REQUIREMENT.**
+
+Participants must type their mentor's name themselves.
+
+There must be:
+
+- NO mentor dropdown.
+- NO predefined mentor list.
+- NO mentor database selection.
+- NO automatic mentor assignment.
+- NO mentor auto-selection.
+
+Create one normal text input.
+
+Field label:
+
+**Mentor Name**
+
+Placeholder:
+
+**Enter your mentor's full name**
+
+## Validation
+
+- Required unless the organizer explicitly changes this setting.
+- Trim leading and trailing spaces.
+- Reject an empty or whitespace-only value.
+- Allow normal names.
+- Allow spaces.
+- Allow initials.
+- Allow common punctuation in names.
+- Support international characters.
+- Set a reasonable maximum length.
+- Display a helpful validation message.
+
+Example:
+
+Mentor Name: Dr. Arun Kumar
+
+This is only an example of the input format, not a real assigned mentor.
+
+## Data handling
+
+Store the exact entered mentor name in the registration document.
+
+Display it in:
+
+- Registration review
+- Registration success page
+- Participant dashboard
+- Admin registration details
+- Admin search results
+- CSV export
+- Excel export
+
+Allow the participant to edit it before the registration deadline if editing is enabled.
+
+**Never replace this manual text input with a dropdown in future UI updates.**
+
+---
+
+# SECTION 21 — TEAM FORMATION
+
+## 21.1 Team size
+
+Mandatory rules:
+
+**Minimum: 1 participant**
+
+**Maximum: 4 participants**
+
+The team leader counts as one participant.
+
+Display:
+
+**Team Size: 1 / 4**
+
+## 21.2 Team leader
+
+The authenticated participant becomes the team leader.
+
+Display a clearly labelled Team Leader section.
+
+Collect:
+
+- Full Name
+- Email
+- Contact Number
+- College
+- Department
+- Year of Study
+
+The leader's email is the authenticated Google email.
+
+## 21.3 Add team members
+
+Provide:
+
+**+ Add Team Member**
+
+Allow up to three additional members.
+
+Each member must have:
+
+- Full Name
+- Email Address
+- Contact Number
+- College / Institution
+- Department
+- Year of Study
+
+Clearly identify:
+
+- Team Leader
+- Team Member 2
+- Team Member 3
+- Team Member 4
+
+## 21.4 Remove team members
+
+Allow the leader to remove additional members before final submission.
+
+Show a confirmation before removing a member if information has already been entered.
+
+Do not allow removal of the team leader while the registration is active.
+
+## 21.5 One-person teams
+
+A participant must be able to register alone.
+
+Do not force users to add additional members.
+
+## 21.6 Team name
+
+Provide an optional Team Name field.
+
+If omitted, generate a unique internal team identifier.
+
+Do not force a team name unless organizers explicitly enable that requirement.
+
+## 21.7 Team validation
+
+Validate:
+
+- Minimum one member
+- Maximum four members
+- Required member information
+- Valid email format
+- Valid phone format
+- No duplicate email within the same team
+- No duplicate contact number within the same team, where the event requires distinct contacts
+
+Do not incorrectly reject a team simply because different members share a legitimately common contact number if the organizers permit it.
+
+---
+
+# SECTION 22 — REVIEW AND CONFIRMATION
+
+Before submission, display the complete registration summary.
+
+### Google Account
+
+- Google name
+- Google email
+
+### Team Leader
+
+- Name
+- Email
+- Contact
+- College
+- Department
+- Year
+
+### Selected Theme
+
+- Theme name
+- Theme description
+
+### Mentor
+
+- Manually entered mentor name
+
+### Team Members
+
+- Member names
+- Emails
+- Contact numbers
+- Colleges
+- Departments
+- Years
+
+### Team
+
+- Team name
+- Total members
+
+Provide Edit actions for each section.
+
+Add a mandatory checkbox:
+
+"I confirm that all the information provided is accurate and complete."
+
+Do not allow submission until this checkbox is selected.
+
+Final button:
+
+**CONFIRM & SUBMIT REGISTRATION**
+
+Prevent accidental multiple submissions by disabling the button during submission.
+
+---
+
+# SECTION 23 — BACKEND REGISTRATION SUBMISSION
+
+On submission:
+
+1. Verify the authenticated Firebase user.
+2. Verify the user's ID token on the server.
+3. Confirm that registration is open.
+4. Validate every required field.
+5. Validate the selected theme.
+6. Validate mentor name.
+7. Validate team size.
+8. Check duplicate registration.
+9. Generate a unique registration ID.
+10. Save the registration.
+11. Save the participant information.
+12. Record creation timestamp.
+13. Set status to Registered.
+14. Return a success response.
+
+Use a secure transaction or equivalent atomic operation to prevent duplicate creation.
+
+If submission fails, preserve the form information so the user can retry.
+
+---
+
+# SECTION 24 — REGISTRATION ID
+
+Generate a unique, human-readable registration ID.
+
+Example:
+
+HAR27-XXXXXX
+
+Requirements:
+
+- Unique
+- Generated by trusted backend logic
+- Not based solely on a predictable sequential number
+- Not the raw Firestore document ID
+- Permanent after successful registration
+
+Use the same ID everywhere.
+
+---
+
+# SECTION 25 — REGISTRATION SUCCESS PAGE
+
+Display:
+
+# REGISTRATION SUCCESSFUL!
+
+"Your HARMONIA 2027 registration has been successfully submitted."
+
+Show:
+
+- Registration ID
+- Registration Date
+- Team Name
+- Team Leader
+- Selected Theme
+- Mentor Name
+- Team Members
+- Registration Status
+
+Buttons:
+
+- View My Registration
+- Download Registration Confirmation
+- Back to Home
+
+Provide a professional printable registration confirmation.
+
+---
+
+# SECTION 26 — EMAIL NOTIFICATIONS
+
+Integrate an email service using secure server-side credentials.
+
+After successful registration, send a confirmation email to the authenticated Google email.
+
+Include:
+
+- HARMONIA 2027 branding
+- Registration ID
+- Team name
+- Team leader
+- Selected theme
+- Mentor name
+- Team member details
+- Registration status
+- Event contact information
+
+Use a professional email template.
+
+Do not send duplicate emails if the participant repeatedly opens the success page.
+
+Track email delivery status.
+
+If email delivery fails, retain the successful registration and allow administrators to resend the confirmation.
+
+Never expose email-service credentials in frontend code.
+
+---
+
+# SECTION 27 — PARTICIPANT DASHBOARD
+
+Create a secure participant dashboard.
+
+The participant should access it by signing in with the same Google account.
+
+Display:
+
+### Account
+
+- Name
+- Google email
+- Profile picture
+
+### Registration
+
+- Registration ID
+- Registration date
+- Team name
+- Team size
+- Selected theme
+- Mentor name
+- Team leader
+- All team members
+- Registration status
+
+### Actions
+
+- View Registration
+- Download Confirmation
+- Edit Registration, if enabled
+- Sign Out
+
+Participants must only access their own registration.
+
+Provide helpful empty states if a user signs in without completing registration.
+
+---
+
+# SECTION 28 — REGISTRATION EDITING
+
+Allow organizers to configure whether editing is enabled.
+
+Before the registration deadline:
+
+If editing is enabled, the team leader can update:
+
+- Participant information
+- Team name
+- Team member details
+- Theme selection
+- Mentor name
+
+Apply the same validation as initial registration.
+
+After the registration deadline:
+
+Disable participant editing unless an authorized organizer grants an exception.
+
+Record:
+
+- Who made the change
+- When it was changed
+- Which fields were changed
+
+Never silently overwrite important registration records.
+
+---
+
+# SECTION 29 — ADMIN AUTHENTICATION
+
+Create a separate secure admin access system.
+
+Roles:
+
+### Super Admin
+
+Full application access.
+
+### Organizer
+
+Registration and event-content management.
+
+### Viewer
+
+Read-only registration access.
+
+Use Firebase custom claims or an equivalent trusted role-based authorization mechanism.
+
+Admin privileges must only be assigned through trusted server-side administrative operations.
+
+Do not allow participants to make themselves administrators.
+
+Do not expose admin pages simply because someone knows the URL.
+
+---
+
+# SECTION 30 — ADMIN DASHBOARD
+
+Title:
+
+**HARMONIA 2027 — ORGANIZER DASHBOARD**
+
+Use the same HARMONIA visual identity.
+
+Display real-time or appropriately refreshed database statistics.
+
+### Main statistics
+
+- Total Registrations
+- Total Participants
+- Total Teams
+- Average Team Size
+- Single-Person Teams
+- Two-Member Teams
+- Three-Member Teams
+- Four-Member Teams
+
+### Theme statistics
+
+- Linguaverse Teams
+- AbilityX Teams
+- Roots to Futures Teams
+- FlowForge Teams
+- IoTVerse Teams
+
+### Registration status
+
+- Registered
+- Verified
+- Shortlisted
+- Selected
+- Finalist
+- Rejected
+
+Do not display fake statistics.
+
+Provide empty states when no registrations exist.
+
+---
+
+# SECTION 31 — ADMIN REGISTRATION MANAGEMENT
+
+Create a full registration management page.
+
+Show registrations in a searchable, filterable table.
+
+Columns:
+
+- Registration ID
+- Registration Date
+- Team Name
+- Team Leader
+- Leader Email
+- Contact Number
+- College
+- Theme
+- Mentor Name
+- Team Size
+- Status
+- Actions
+
+Allow:
+
+- View
+- Edit
+- Update Status
+- Download
+- Export
+
+Use pagination for large datasets.
+
+Allow sorting by:
+
+- Registration date
+- Registration ID
+- Team name
+- Theme
+- Team size
+- Status
+
+---
+
+# SECTION 32 — ADMIN SEARCH AND FILTERS
+
+Provide search by:
+
+- Registration ID
+- Team Name
+- Participant Name
+- Participant Email
+- Contact Number
+- College
+- Department
+- Mentor Name
+
+Filters:
+
+### Theme
+
+- All Themes
+- Linguaverse
+- AbilityX
+- Roots to Futures
+- FlowForge
+- IoTVerse
+
+### Team Size
+
+- One Member
+- Two Members
+- Three Members
+- Four Members
+
+### Status
+
+- Registered
+- Verified
+- Shortlisted
+- Selected
+- Finalist
+- Rejected
+
+### Mentor
+
+Search manually entered mentor names.
+
+### College
+
+Filter by institution.
+
+Provide Clear Filters.
+
+Show the total number of matching records.
+
+---
+
+# SECTION 33 — REGISTRATION DETAILS PAGE FOR ADMINS
+
+When an organizer opens a registration, display a complete detail page.
+
+### Registration Information
+
+- Registration ID
+- Creation date
+- Last updated date
+- Status
+
+### Team Leader
+
+- Name
+- Email
+- Phone
+- College
+- Department
+- Year
+
+### Theme
+
+- Theme name
+- Description
+
+### Mentor
+
+- Exact manually entered mentor name
+
+### Team Members
+
+For each member:
+
+- Name
+- Email
+- Phone
+- College
+- Department
+- Year
+- Role
+
+Allow authorized admins to update registration information.
+
+Show a confirmation before important changes.
+
+---
+
+# SECTION 34 — REGISTRATION STATUS MANAGEMENT
+
+Supported statuses:
+
+1. Registered
+2. Verified
+3. Shortlisted
+4. Selected
+5. Finalist
+6. Rejected
+
+Allow authorized organizers to update status.
+
+Record every status change in an audit log.
+
+Show a clear status indicator on the participant dashboard.
+
+Do not automatically claim a participant is selected or shortlisted.
+
+Only show the actual status assigned by organizers.
+
+---
+
+# SECTION 35 — DATA EXPORT
+
+Provide CSV and Excel exports.
+
+Include:
+
+- Registration ID
+- Registration date
+- Team name
+- Team size
+- Team leader name
+- Leader email
+- Leader contact
+- College
+- Department
+- Year
+- Theme
+- Mentor name
+- Every team member's details
+- Registration status
+
+Allow exports:
+
+- All registrations
+- Filtered registrations
+- Individual registration
+
+Protect exports with admin permissions.
+
+Avoid exporting unnecessary sensitive account data.
+
+Use proper spreadsheet escaping to prevent formula injection from user-entered text.
+
+---
+
+# SECTION 36 — EVENT CONTENT MANAGEMENT
+
+Create an admin content management section.
+
+Authorized organizers should be able to update:
+
+- Event description
+- About Us
+- Themes
+- Theme descriptions
+- Timeline
+- Event dates
+- Prize information
+- FAQ questions
+- FAQ answers
+- Faculty coordinators
+- Event coordinators
+- Contact information
+- Registration deadlines
+- Registration availability
+
+All changes must appear on the public website without requiring a new application build where technically practical.
+
+Maintain a record of content changes.
+
+Do not allow unauthorized visitors to modify event content.
+
+---
+
+# SECTION 37 — REGISTRATION OPEN/CLOSED CONTROL
+
+Add an administrator setting:
+
+**Registration Status**
+
+Options:
+
+- Open
+- Closed
+
+When open:
+
+Display the Register Now action.
+
+When closed:
+
+Display:
+
+"Registration is currently closed. Thank you for your interest in HARMONIA 2027."
+
+Do not accept new registrations through the backend when registration is closed.
+
+Existing participants must still be able to sign in and view their registration.
+
+Also support:
+
+- Opening date
+- Closing date
+- Configured timezone
+- Optional registration capacity
+
+If a capacity limit is enabled, prevent registrations beyond that limit using an atomic backend check.
+
+---
+
+# SECTION 38 — MAINTENANCE MODE
+
+Add an administrator-controlled maintenance mode.
+
+When enabled, public visitors see:
+
+**HARMONIA 2027**
+
+"We are currently updating our website. Please check back soon."
+
+Authorized administrators must retain access.
+
+Do not expose private dashboard information during maintenance mode.
+
+---
+
+# SECTION 39 — DATABASE DESIGN
+
+Use a structured Firestore architecture.
+
+Suggested collections:
+
+### users
+
+- uid
+- displayName
+- email
+- photoURL
+- role
+- createdAt
+- updatedAt
+
+### registrations
+
+- registrationId
+- googleUid
+- email
+- teamName
+- themeId
+- mentorName
+- teamSize
+- status
+- registrationDate
+- createdAt
+- updatedAt
+- editingAllowed
+
+### registrations/{registrationId}/participants
+
+- participantId
+- name
+- email
+- phone
+- college
+- department
+- year
+- role
+
+### themes
+
+- themeId
+- name
+- tagline
+- description
+- focusAreas
+- active
+
+### eventSettings
+
+- registrationOpen
+- registrationDeadline
+- maintenanceMode
+- timezone
+- maximumTeamSize
+- minimumTeamSize
+- prizeInformation
+- timeline
+- contactInformation
+
+### auditLogs
+
+- action
+- actorUid
+- registrationId
+- changedFields
+- timestamp
+
+### notificationLogs
+
+- registrationId
+- recipient
+- notificationType
+- deliveryStatus
+- timestamp
+
+Adapt the schema as required, but maintain referential consistency.
+
+Store the manually entered mentor name directly in the registration record.
+
+Do not create a mentor-selection database.
+
+---
+
+# SECTION 40 — SECURITY AND PRIVACY
+
+Implement production-level security.
+
+### Authentication
+
+- Verify Firebase ID tokens on the backend.
+- Use secure Google authentication.
+- Never trust a UID supplied by the browser without verifying the token.
+- Handle session expiry correctly.
+
+### Authorization
+
+- Participants can access only their own registrations.
+- Team members' personal information must not be publicly exposed.
+- Admin roles must be assigned through trusted server-side processes.
+- Viewer accounts must remain read-only.
+
+### Database
+
+- Start Firestore rules with deny-by-default access.
+- Add only explicitly required permissions.
+- Prevent unauthorized reads.
+- Prevent unauthorized writes.
+- Validate allowed fields and field types.
+- Prevent participants from changing ownership or roles.
+- Test rules using Firebase Emulator Suite.
+
+### Application security
+
+- Validate inputs on the server.
+- Sanitize user-entered text.
+- Protect against common web vulnerabilities.
+- Apply appropriate rate limits.
+- Use HTTPS in production.
+- Use secure session handling.
+- Keep private credentials server-side.
+- Restrict external API keys to the appropriate services.
+- Never expose service-account private keys.
+
+### Privacy
+
+Display a short privacy notice explaining:
+
+- Why participant information is collected.
+- How registration data is used.
+- Who can access it.
+- How participants can request corrections.
+- How organizers handle registration information.
+
+Collect only information necessary for event administration.
+
+Do not publicly display participant phone numbers or personal emails.
+
+Do not use participant information for unrelated purposes.
+
+---
+
+# SECTION 41 — GOOGLE AND FIREBASE CONFIGURATION
+
+Provide a clear configuration guide for:
+
+- Firebase project
+- Firebase Authentication
+- Google provider
+- Cloud Firestore
+- Firestore security rules
+- Cloud Functions
+- Authorized domains
+- Localhost
+- Production domain
+
+Use environment variables where appropriate.
+
+Provide:
+
+.env.example
+
+Include only placeholder values.
+
+Do not place actual private credentials in the source code.
+
+Clearly identify any configuration steps that require the project owner to access the Firebase Console.
+
+---
+
+# SECTION 42 — EMAIL AND NOTIFICATION MANAGEMENT
+
+Provide notification support for:
+
+- Successful registration
+- Registration confirmation
+- Registration update
+- Status change
+- Registration deadline reminders, if configured
+
+Only send messages when the appropriate event occurs.
+
+Prevent duplicate notifications.
+
+Keep a notification history for administrators.
+
+Do not claim that an email was sent if the email service has not confirmed delivery.
+
+---
+
+# SECTION 43 — ADDITIONAL USEFUL HACKATHON FEATURES
+
+Implement the following additional features where practical.
+
+### A. Registration deadline countdown
+
+Display a countdown to the configured registration deadline.
+
+Use the correct event timezone.
+
+Hide or replace the countdown when the deadline passes.
+
+### B. Theme-wise registration analytics
+
+Display a chart of registrations per theme.
+
+Use actual database records.
+
+### C. Team-size analytics
+
+Display the number of teams with one, two, three and four members.
+
+### D. College-wise analytics
+
+Allow organizers to understand participation across institutions.
+
+### E. Registration search shortcuts
+
+Provide quick filters for today's registrations, recent registrations and pending verification.
+
+### F. Print registration
+
+Allow participants and authorized admins to print a clean registration confirmation.
+
+### G. Downloadable confirmation
+
+Generate a professional PDF confirmation containing:
+
+- HARMONIA branding
+- Registration ID
+- Team name
+- Leader information
+- Selected theme
+- Mentor name
+- Team members
+
+Do not expose private administrative information in the PDF.
+
+### H. Admin audit history
+
+Record important actions:
+
+- Registration created
+- Registration edited
+- Status changed
+- Registration exported
+- Content updated
+- Registration settings changed
+
+### I. Data backup
+
+Provide an administrator-controlled backup/export process.
+
+Do not provide unrestricted public access to backups.
+
+### J. Empty states
+
+Display meaningful messages when:
+
+- No registrations exist.
+- No teams match the filter.
+- No theme has registrations.
+- No search results are found.
+
+---
+
+# SECTION 44 — RESPONSIVE DESIGN
+
+The original homepage must remain visually consistent with the supplied screenshot.
+
+Test on:
+
+- Desktop
+- Laptop
+- Tablet
+- Mobile
+
+### Mobile requirements
+
+- Responsive navigation
+- Proper logo placement
+- Readable typography
+- Appropriate card stacking
+- Easy form interaction
+- Touch-friendly buttons
+- No horizontal scrolling
+- Responsive tables
+- Proper spacing
+- Accessible validation messages
+
+Do not simply scale down the desktop page.
+
+Rearrange only what is necessary to make the design usable.
+
+---
+
+# SECTION 45 — ACCESSIBILITY
+
+Implement:
+
+- Semantic HTML
+- Keyboard navigation
+- Accessible form labels
+- Screen-reader support
+- Visible focus indicators
+- Appropriate color contrast
+- Descriptive image alt text
+- Accessible accordion controls
+- Clear error messages
+- Status indicators that do not rely only on color
+
+Preserve the existing visual design while improving accessibility.
+
+---
+
+# SECTION 46 — PERFORMANCE
+
+Optimize:
+
+- Image loading
+- Image dimensions
+- Lazy loading
+- Component rendering
+- Database queries
+- Pagination
+- API requests
+- Bundle size
+- Mobile performance
+
+Avoid loading every registration record at once.
+
+Use pagination and appropriate Firestore indexes.
+
+Do not load the entire admin dashboard before the user is authorized.
+
+---
+
+# SECTION 47 — CODE ORGANIZATION
+
+Use reusable components and maintainable architecture.
+
+Suggested frontend components:
+
+- Header
+- Footer
+- Hero
+- AboutEvent
+- AboutUs
+- ThemeSection
+- ThemeCard
+- ThemeDetails
+- Timeline
+- PrizeSection
+- FAQ
+- Contact
+- GoogleSignIn
+- RegistrationWizard
+- ParticipantForm
+- ThemeSelector
+- MentorNameInput
+- TeamMemberForm
+- RegistrationReview
+- RegistrationSuccess
+- ParticipantDashboard
+- AdminDashboard
+- RegistrationTable
+- RegistrationDetails
+- Analytics
+- AdminSettings
+
+Suggested backend modules:
+
+- Authentication verification
+- Registration creation
+- Registration updates
+- Duplicate prevention
+- Registration ID generation
+- Theme management
+- Admin authorization
+- Email notifications
+- Export generation
+- Audit logging
+- Event settings
+
+Do not put the entire application into a single component or file.
+
+---
+
+# SECTION 48 — TESTING REQUIREMENTS
+
+Do not declare the project complete until the following tests pass.
+
+## A. Original design
+
+- Homepage resembles the supplied screenshot.
+- Original background is preserved.
+- Original color palette is preserved.
+- Original typography is preserved.
+- Original header arrangement is preserved.
+- Original theme cards are preserved.
+- All three organization logos display correctly.
+
+## B. Authentication
+
+- Google Sign-In works.
+- Google account information loads.
+- Google email is populated.
+- Email is read-only.
+- Account switching works.
+- Sign-out works.
+- Duplicate registration is detected.
+- Unauthenticated registration requests are rejected.
+
+## C. Registration
+
+Test:
+
+- One-person team.
+- Two-person team.
+- Three-person team.
+- Four-person team.
+- Five-person team rejection.
+- Missing participant information.
+- Invalid email.
+- Invalid phone.
+- Missing theme.
+- Multiple theme selection prevention.
+- Missing mentor name.
+- Manual mentor name entry.
+- Mentor name persistence.
+- Review and edit.
+- Confirmation checkbox.
+- Successful submission.
+- Registration ID generation.
+- Database persistence.
+
+## D. Mentor
+
+Verify:
+
+- Mentor is a normal text field.
+- No dropdown exists.
+- No predefined list exists.
+- Participant can enter the name manually.
+- Name is saved correctly.
+- Name appears on the review page.
+- Name appears on the success page.
+- Name appears in the participant dashboard.
+- Name appears in the admin dashboard.
+- Name appears in exports.
+
+## E. Team
+
+Verify:
+
+- Leader is automatically identified.
+- Team member count updates.
+- Additional members can be added.
+- Additional members can be removed.
+- Maximum four participants is enforced.
+- One-person team is accepted.
+- Duplicate member details are validated.
+
+## F. Participant dashboard
+
+Verify:
+
+- Correct user registration appears.
+- Other users' information is inaccessible.
+- Mentor name is displayed.
+- Registration status is displayed.
+- PDF download works.
+- Editing follows configured rules.
+
+## G. Admin dashboard
+
+Verify:
+
+- Unauthorized access is blocked.
+- Admin access works.
+- Search works.
+- Filters work.
+- Mentor-name search works.
+- Theme analytics work.
+- Team-size analytics work.
+- Status changes work.
+- Audit history works.
+- CSV export works.
+- Excel export works.
+
+## H. Backend
+
+Verify:
+
+- Firebase authentication is checked server-side.
+- Firestore rules are tested.
+- Duplicate registrations are prevented.
+- Data ownership is protected.
+- Admin privileges cannot be self-assigned.
+- Secrets are not exposed.
+- Database errors are handled.
+- Registration capacity is enforced if enabled.
+
+---
+
+# SECTION 49 — DEPLOYMENT AND HANDOVER
+
+Prepare the application for deployment.
+
+Provide:
+
+- Complete source code
+- Folder structure
+- Installation instructions
+- Dependency list
+- Environment variable template
+- Firebase configuration instructions
+- Google authentication setup
+- Firestore security rules
+- Database indexes
+- Backend deployment instructions
+- Frontend deployment instructions
+- Production domain configuration
+- Testing instructions
+
+Create separate development and production configurations.
+
+Do not deploy untested security rules.
+
+Do not publish test credentials.
+
+Do not expose admin accounts or private data.
+
+The project should be ready for deployment after the organizer supplies the required configuration and credentials.
+
+---
+
+# SECTION 50 — FINAL USER JOURNEY
+
+The complete participant experience must work as follows:
+
+**1. VISIT WEBSITE**
+
+Participant opens HARMONIA 2027.
+
+↓
+
+**2. EXPLORE EVENT**
+
+Views the homepage, about section, five themes, timeline, prizes, FAQ and contact details.
+
+↓
+
+**3. REGISTER**
+
+Clicks Register Now.
+
+↓
+
+**4. GOOGLE AUTHENTICATION**
+
+Signs in using their Google account.
+
+↓
+
+**5. ACCOUNT CHECK**
+
+System checks whether the Google account has already registered.
+
+↓
+
+**6. PARTICIPANT INFORMATION**
+
+Enters name, contact number, college, department and year.
+
+↓
+
+**7. THEME SELECTION**
+
+Selects exactly one of the five themes.
+
+↓
+
+**8. MENTOR INFORMATION**
+
+Manually types the mentor's name into the text field.
+
+↓
+
+**9. TEAM FORMATION**
+
+Adds between zero and three additional team members.
+
+↓
+
+**10. REVIEW**
+
+Checks all participant, theme, mentor and team information.
+
+↓
+
+**11. CONFIRMATION**
+
+Accepts the accuracy declaration.
+
+↓
+
+**12. SUBMISSION**
+
+Backend validates and stores the registration.
+
+↓
+
+**13. REGISTRATION ID**
+
+Unique ID is generated.
+
+↓
+
+**14. SUCCESS**
+
+Registration confirmation is displayed.
+
+↓
+
+**15. EMAIL**
+
+Confirmation email is sent if the service is configured.
+
+↓
+
+**16. PARTICIPANT DASHBOARD**
+
+Participant can later sign in and view their registration.
+
+↓
+
+**17. ADMIN MANAGEMENT**
+
+Authorized organizers can view, search, filter, update and export registrations.
+
+---
+
+# SECTION 51 — FINAL NON-NEGOTIABLE REQUIREMENTS
+
+Before finishing, confirm all of the following:
+
+1. The original uploaded website design is preserved.
+2. The original homepage background and scenery are preserved.
+3. The original color palette is unchanged.
+4. The original typography and layout are preserved.
+5. The RIT logo is included.
+6. The iDataMind logo is included.
+7. The official IEEE logo is included.
+8. Google Authentication is real and functional.
+9. Google email is automatically populated.
+10. Existing registration detection works.
+11. Participant details are collected correctly.
+12. Exactly one theme can be selected.
+13. Mentor name is manually typed by the participant.
+14. There is no mentor dropdown or predefined mentor list.
+15. Team size is minimum one and maximum four.
+16. Team leader information is stored.
+17. All additional member information is stored.
+18. Review and editing work.
+19. Registration ID is generated securely.
+20. Registration data is saved in Firestore.
+21. Registration confirmation works.
+22. Participant dashboard works.
+23. Admin authentication works.
+24. Admin dashboard works.
+25. Search and filters work.
+26. Mentor-name filtering works.
+27. CSV and Excel exports work.
+28. Registration open/closed control works.
+29. Security rules are tested.
+30. Mobile and desktop layouts work.
+31. No fake registrations or fake statistics exist.
+32. No important buttons are non-functional.
+33. No private credentials are exposed.
+
+---
+
+# FINAL EXECUTION INSTRUCTIONS
+
+Do not simply respond with a plan or a design preview.
+
+Inspect the existing project and supplied screenshot first.
+
+Understand the existing codebase before making changes.
+
+Implement the website in logical stages while preserving the existing design.
+
+If a required image asset is missing, ask for it rather than generating a replacement that changes the original design.
+
+If Firebase credentials or official event details are missing, create the appropriate configuration points and clearly identify what must be supplied.
+
+Do not silently invent:
+
+- Event dates
+- Prize amounts
+- Mentor assignments
+- Faculty names
+- Contact numbers
+- Email addresses
+- Participant statistics
+- Sponsor relationships
+
+Do not claim functionality is implemented when it is only a placeholder.
+
+Run the complete testing checklist before declaring completion.
+
+**THE FINAL OBJECTIVE:**
+
+Deliver a complete, secure, responsive, professional and genuinely functional HARMONIA 2027 international hackathon website.
+
+It must preserve the exact visual direction of my supplied original website screenshot while providing a complete Google-authenticated registration platform and secure organizer management system.
+
+**REMEMBER: DO NOT REDESIGN MY WEBSITE. BUILD THE WORKING APPLICATION AROUND MY ORIGINAL DESIGN.**

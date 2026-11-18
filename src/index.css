@@ -1,0 +1,88 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: #F6DCBD;
+    color: #1B2845;
+    -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
+  }
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}
+
+@keyframes floatSlow {
+  0%, 100% {
+    transform: translateY(0px) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-8px) rotate(1deg);
+  }
+}
+
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.65;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.06);
+  }
+}
+
+@keyframes shimmerSweep {
+  0% {
+    transform: translateX(-120%) skewX(-15deg);
+  }
+  100% {
+    transform: translateX(220%) skewX(-15deg);
+  }
+}
+
+.animate-float-slow {
+  animation: floatSlow 5.5s ease-in-out infinite;
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 4s ease-in-out infinite;
+}
+
+.track-3d-blue {
+  background: linear-gradient(145deg, #3562E3 0%, #2448B8 100%);
+  box-shadow: 0 12px 0 #173187, 0 20px 30px -5px rgba(23, 49, 135, 0.45);
+}
+
+.track-3d-green {
+  background: linear-gradient(145deg, #749F67 0%, #58824B 100%);
+  box-shadow: 0 12px 0 #3E6034, 0 20px 30px -5px rgba(62, 96, 52, 0.45);
+}
+
+.track-3d-terracotta {
+  background: linear-gradient(145deg, #CA6735 0%, #A94D20 100%);
+  box-shadow: 0 12px 0 #7C3411, 0 20px 30px -5px rgba(124, 52, 17, 0.45);
+}
+
+.track-3d-plum {
+  background: linear-gradient(145deg, #982968 0%, #78194E 100%);
+  box-shadow: 0 12px 0 #530E34, 0 20px 30px -5px rgba(83, 14, 52, 0.45);
+}
+
+.track-3d-slate {
+  background: linear-gradient(145deg, #52738C 0%, #3B586E 100%);
+  box-shadow: 0 12px 0 #263C4D, 0 20px 30px -5px rgba(38, 60, 77, 0.45);
+}
+
+
