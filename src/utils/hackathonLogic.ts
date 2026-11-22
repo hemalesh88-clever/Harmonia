@@ -55,18 +55,103 @@ export interface Coordinator {
   category: 'faculty' | 'student';
 }
 
+export type SubmissionStatus =
+  | 'Submitted'
+  | 'Under Review'
+  | 'Shortlisted'
+  | 'Rejected'
+  | 'Finalist';
+
+export type PaymentStatus = 'PENDING' | 'VERIFIED' | 'REJECTED';
+
+export interface TeamMember {
+  name: string;
+  email: string;
+  mobile: string;
+  role?: string;
+}
+
 export interface TeamRegistration {
   id: string;
   teamName: string;
   leaderName: string;
   leaderEmail: string;
+  leaderMobile: string;
+  leaderMobileVerified?: boolean;
   institution: string;
   ieeeMemberId?: string;
+  mentorName?: string;
   trackId: Exclude<TrackId, 'all'>;
   projectTitle: string;
   abstract: string;
+  inclusionImpact?: string;
   memberCount: number;
+  members?: TeamMember[];
+  status?: SubmissionStatus;
   createdAt: string;
+  updatedAt?: string;
+  ownerId?: string;
+  // Mandatory Server-Trusted Payment Fields
+  registrationFee: number;
+  paymentStatus: PaymentStatus;
+  paymentScreenshotUrl?: string;
+  paymentScreenshotName?: string;
+  paymentScreenshotSize?: number;
+  paymentUploadedAt?: string;
+  paymentVerifiedAt?: string;
+  paymentVerifiedBy?: string;
+  paymentRejectedAt?: string;
+  paymentRejectedBy?: string;
+  paymentRejectionReason?: string;
+}
+
+/**
+ * Live Price Calculation (Server-Trusted)
+ * 1 Member = ₹150
+ * 2 Members = ₹300
+ * 3 Members = ₹450
+ * 4 Members = ₹500 (Exact Team Discount Pricing — NOT ₹600!)
+ */
+export function calculateRegistrationFee(memberCount: number): number {
+  const count = Math.min(4, Math.max(1, Math.round(Number(memberCount) || 1)));
+  switch (count) {
+    case 1:
+      return 150;
+    case 2:
+      return 300;
+    case 3:
+      return 450;
+    case 4:
+      return 500;
+    default:
+      return 150;
+  }
+}
+
+/**
+ * Global Email Normalization (Case-insensitive comparison)
+ */
+export function normalizeEmail(email: string): string {
+  return (email || '').trim().toLowerCase();
+}
+
+/**
+ * Global Mobile Normalization (Normalized 10-digit Indian mobile number)
+ */
+export function normalizeMobile(mobile: string): string {
+  const digits = (mobile || '').replace(/\D/g, '');
+  if (digits.length === 12 && digits.startsWith('91')) {
+    return digits.slice(2);
+  }
+  if (digits.length === 11 && digits.startsWith('0')) {
+    return digits.slice(1);
+  }
+  return digits.slice(-10);
+}
+
+export function generateRegistrationId(): string {
+  const randomDigits = Math.floor(10000 + Math.random() * 90000);
+  return `HAR-2027-${randomDigits}`;
 }
 
 export interface RegistrationValidationResult {
@@ -75,12 +160,13 @@ export interface RegistrationValidationResult {
 }
 
 export const OFFICIAL_LOGOS = {
-  harmonia: '/assets/aistudio/WhatsApp_Image_2026-11-05_at_9.55.36_PM_6702fc40.jpeg',
-  rit: '/assets/aistudio/RIT_Logo_copy.jpg_df27acb0.jpeg',
-  ieee: '/assets/aistudio/d9390228dd804b94b88b8e40fd379e17_11206b80.jpg',
-  idatamind: '/assets/aistudio/WhatsApp_Image_2026-11-05_at_6.38.06_PM_0bcd0555.jpeg',
-  poster: '/assets/aistudio/WhatsApp_Image_2026-11-05_at_9.51.19_PM_10200bbf.jpeg',
-  coastalHero: '/assets/images/harmonia_coastal_sunset_hero_1793899947684.jpg',
+  harmonia: '/assets/aistudio/harmonia_logo.webp?orig=WhatsApp_Image_2026-11-05_at_9.55.36_PM_6702fc40.jpeg',
+  rit: '/assets/aistudio/rit_logo.webp?orig=RIT_Logo_copy.jpg_df27acb0.jpeg',
+  ieee: '/assets/aistudio/ieee_logo.webp?orig=d9390228dd804b94b88b8e40fd379e17_11206b80.jpg',
+  idatamind: '/assets/aistudio/idatamind_logo.webp?orig=WhatsApp_Image_2026-11-05_at_6.38.06_PM_0bcd0555.jpeg',
+  poster: '/assets/aistudio/harmonia_poster.webp?orig=WhatsApp_Image_2026-11-05_at_9.51.19_PM_10200bbf.jpeg',
+  coastalHero: '/assets/images/harmonia_coastal_sunset_hero.webp',
+  coastalHeroFallback: '/assets/images/harmonia_coastal_sunset_hero_1793899947684.jpg',
 } as const;
 
 export const EVENT_DETAILS = {
@@ -253,44 +339,77 @@ export const HACKATHON_TRACKS: HackathonTrack[] = [
 
 export const INITIAL_REGISTRATIONS: TeamRegistration[] = [
   {
-    id: 'team-101',
+    id: 'HAR-2027-10101',
     teamName: 'BhashaBridge AI',
     leaderName: 'Ananya Sundaram',
     leaderEmail: 'ananya.s@ritchennai.edu.in',
+    leaderMobile: '9952113855',
+    leaderMobileVerified: true,
     institution: 'Rajalakshmi Institute of Technology',
     ieeeMemberId: '98412045',
     trackId: 'linguaverse',
     projectTitle: 'Zero-Shot Acoustic Translation for Coastal Fishing Communities',
     abstract:
       'An offline-capable voice translator bridging 14 regional coastal dialects with emergency maritime weather broadcasts in real time.',
+    inclusionImpact: 'Enables real-time maritime emergency broadcast access in 14 native dialects for coastal fishers.',
     memberCount: 4,
+    status: 'Shortlisted',
+    registrationFee: 500,
+    paymentStatus: 'VERIFIED',
+    members: [
+      { name: 'Kavitha R', email: 'kavitha.r@ritchennai.edu.in', mobile: '9840112233' },
+      { name: 'Rohan Patel', email: 'rohan.p@ritchennai.edu.in', mobile: '9790445566' },
+      { name: 'Divya Nair', email: 'divya.n@ritchennai.edu.in', mobile: '9444778899' },
+    ],
     createdAt: '2026-11-05T07:30:00Z',
   },
   {
-    id: 'team-102',
+    id: 'HAR-2027-10202',
     teamName: 'Auralis Tactile',
     leaderName: 'Karthikeya V.',
     leaderEmail: 'karthikeya.v@ieee.org',
+    leaderMobile: '9095324739',
+    leaderMobileVerified: true,
     institution: 'IEEE Student Branch — Madras Section',
     ieeeMemberId: '97103912',
     trackId: 'abilityx',
     projectTitle: 'Ultrasonic Haptic Wayfinding Wearable for Public Transit Hubs',
     abstract:
       'Wearable spatial guidance band paired with a progressive web companion that translates crowded railway station layouts into directional tactile pulses.',
+    inclusionImpact: 'Independent indoor navigation for visually impaired passengers across bustling railway terminals.',
     memberCount: 4,
+    status: 'Under Review',
+    registrationFee: 500,
+    paymentStatus: 'VERIFIED',
+    members: [
+      { name: 'Siddharth M', email: 'siddharth.m@ieee.org', mobile: '9884112233' },
+      { name: 'Pooja V', email: 'pooja.v@ieee.org', mobile: '9445223344' },
+      { name: 'Aditya K', email: 'aditya.k@ieee.org', mobile: '9789334455' },
+    ],
     createdAt: '2026-11-05T08:15:00Z',
   },
   {
-    id: 'team-103',
+    id: 'HAR-2027-10303',
     teamName: 'CoastalGrid Sentinels',
     leaderName: 'Dr. Meera Krishnan',
     leaderEmail: 'meera.k@idatamind.in',
+    leaderMobile: '8754112325',
+    leaderMobileVerified: true,
     institution: 'iDataMind Research Fellows',
     trackId: 'iotverse',
     projectTitle: 'LoRaWAN Estuarine Flood Buoys & Microgrid Islanding',
     abstract:
       'Solar-powered coastal sensor nodes with automated substation relay scheduling to keep community clinics powered during monsoon surges.',
+    inclusionImpact: 'Keeps critical health centers and oxygen generators powered during coastal flooding disasters.',
     memberCount: 4,
+    status: 'Finalist',
+    registrationFee: 500,
+    paymentStatus: 'VERIFIED',
+    members: [
+      { name: 'Arjun Das', email: 'arjun.d@idatamind.in', mobile: '9176332211' },
+      { name: 'Sneha Roy', email: 'sneha.r@idatamind.in', mobile: '9841556677' },
+      { name: 'Vijay S', email: 'vijay.s@idatamind.in', mobile: '9940889900' },
+    ],
     createdAt: '2026-11-05T08:50:00Z',
   },
 ];
@@ -394,12 +513,30 @@ export function filterRegistrations(
     const matchesTrack = selectedTrack === 'all' || reg.trackId === selectedTrack;
     if (!matchesTrack) return false;
     if (!normalizedQuery) return true;
-    return (
+
+    const matchesLead =
       reg.teamName.toLowerCase().includes(normalizedQuery) ||
       reg.projectTitle.toLowerCase().includes(normalizedQuery) ||
       reg.institution.toLowerCase().includes(normalizedQuery) ||
-      reg.leaderName.toLowerCase().includes(normalizedQuery)
-    );
+      reg.leaderName.toLowerCase().includes(normalizedQuery) ||
+      (reg.leaderMobile && reg.leaderMobile.includes(normalizedQuery)) ||
+      reg.leaderEmail.toLowerCase().includes(normalizedQuery) ||
+      reg.abstract.toLowerCase().includes(normalizedQuery) ||
+      (reg.status && reg.status.toLowerCase().includes(normalizedQuery)) ||
+      (reg.id && reg.id.toLowerCase().includes(normalizedQuery));
+
+    if (matchesLead) return true;
+
+    if (reg.members && Array.isArray(reg.members)) {
+      return reg.members.some(
+        (m) =>
+          m.name.toLowerCase().includes(normalizedQuery) ||
+          m.email.toLowerCase().includes(normalizedQuery) ||
+          m.mobile.includes(normalizedQuery)
+      );
+    }
+
+    return false;
   });
 }
 
@@ -407,11 +544,13 @@ export function validateTeamRegistration(input: {
   teamName: string;
   leaderName: string;
   leaderEmail: string;
+  leaderMobile: string;
   institution: string;
   trackId: string;
   projectTitle: string;
   abstract: string;
   memberCount: number;
+  members?: TeamMember[];
 }): RegistrationValidationResult {
   const errors: Record<string, string> = {};
 
@@ -423,7 +562,11 @@ export function validateTeamRegistration(input: {
   }
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!input.leaderEmail || !emailRegex.test(input.leaderEmail.trim())) {
-    errors.leaderEmail = 'Enter a valid academic or organizational email address.';
+    errors.leaderEmail = 'Please enter a valid email address.';
+  }
+  const cleanedMobile = (input.leaderMobile || '').replace(/\D/g, '');
+  if (!cleanedMobile || cleanedMobile.length !== 10 || !/^[6-9]/.test(cleanedMobile)) {
+    errors.leaderMobile = 'Enter a valid 10-digit Indian mobile number (starts with 6, 7, 8, or 9).';
   }
   if (!input.institution || input.institution.trim().length < 3) {
     errors.institution = 'University, college, or organization name is required.';
@@ -448,6 +591,49 @@ export function validateTeamRegistration(input: {
     input.memberCount > 4
   ) {
     errors.memberCount = 'Team size must be between 1 and 4 members (per official rules).';
+  }
+
+  // Validate additional members strictly based on selected memberCount
+  // If memberCount = 1: No additional members required, zero errors.
+  // If memberCount = 2: Only Member #2 required. Member #3 & #4 are never checked.
+  // If memberCount = 3: Only Member #2 and #3 required. Member #4 is never checked.
+  // If memberCount = 4: Member #2, #3, and #4 required.
+  if (input.memberCount > 1) {
+    const needed = input.memberCount - 1;
+    const activeMembers = input.members ? input.members.slice(0, needed) : [];
+    const seenEmails = new Set<string>([normalizeEmail(input.leaderEmail)]);
+    const seenMobiles = new Set<string>([normalizeMobile(cleanedMobile)]);
+
+    for (let i = 0; i < needed; i++) {
+      const m = activeMembers[i] || { name: '', email: '', mobile: '' };
+      const memberNum = i + 2;
+
+      if (!m.name || m.name.trim().length < 2) {
+        errors[`member_${memberNum}_name`] = `Member ${memberNum} name is required.`;
+      }
+
+      const mEmail = normalizeEmail(m.email);
+      if (!mEmail || !emailRegex.test(mEmail)) {
+        errors[`member_${memberNum}_email`] = `Enter a valid email for Member ${memberNum}.`;
+      } else if (seenEmails.has(mEmail)) {
+        errors[`member_${memberNum}_email`] = `Each team member must have a unique email address and mobile number.`;
+      } else {
+        seenEmails.add(mEmail);
+      }
+
+      const mMobile = normalizeMobile(m.mobile);
+      if (!mMobile || mMobile.length !== 10 || !/^[6-9]/.test(mMobile)) {
+        errors[`member_${memberNum}_mobile`] = `Enter a valid 10-digit mobile number for Member ${memberNum}.`;
+      } else if (seenMobiles.has(mMobile)) {
+        errors[`member_${memberNum}_mobile`] = `Each team member must have a unique email address and mobile number.`;
+      } else {
+        seenMobiles.add(mMobile);
+      }
+    }
+
+    if (Object.keys(errors).some((k) => k.startsWith('member_'))) {
+      errors.members = `Please complete the details for all ${input.memberCount} team members.`;
+    }
   }
 
   return {

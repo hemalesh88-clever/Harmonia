@@ -9,13 +9,32 @@
     <meta property="og:description" content="Official registration, team formation, and submission portal for HARMONIA: International Hackathon for a More Inclusive and Connected World, organized by RIT, IEEE, and iDataMind." />
     <meta property="og:type" content="website" />
     <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#13354B" />
+    <link rel="manifest" href="/manifest.json" />
+
+    <!-- DNS Prefetch & Preconnect for Critical Third-Party Origins -->
+    <link rel="dns-prefetch" href="https://fonts.googleapis.com" />
+    <link rel="dns-prefetch" href="https://fonts.gstatic.com" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+    <!-- Preload Critical LCP Hero Image -->
+    <link rel="preload" as="image" href="/assets/images/harmonia_coastal_sunset_hero.webp" type="image/webp" fetchpriority="high" />
+
+    <!-- Highly Optimized Google Fonts (Strictly Required Weights Only) -->
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Plus+Jakarta+Sans:wght@500;700;800&display=swap" rel="stylesheet" />
   </head>
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
+    <script>
+      // Register Service Worker in the background without blocking initial paint
+      if ('serviceWorker' in navigator && window.location.protocol === 'https:') {
+        window.addEventListener('load', () => {
+          navigator.serviceWorker.register('/sw.js').catch(() => {});
+        });
+      }
+    </script>
   </body>
 </html>
 

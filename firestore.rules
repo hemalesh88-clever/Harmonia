@@ -1,24 +1,79 @@
 rules_version = '2';
 service cloud.firestore {
   match /databases/{database}/documents {
+    // Default Deny: Deny all reads and writes by default
     match /{document=**} {
       allow read, write: if false;
     }
+
+    // ===============================================================
+    // Assumed Data Model
+    // ===============================================================
+    //
+    // Collection: registrations
+    // Document ID: registrationId (e.g., "team-1700000000000", "HAR-2027-10101")
+    // Fields:
+    //   - id: string (required, 1-128 chars, matches doc ID, immutable)
+    //   - ownerId: string (required, matches auth UID, immutable)
+    //   - teamName: string (required, 3-80 chars)
+    //   - leaderName: string (required, 2-80 chars)
+    //   - leaderEmail: string (required, 5-120 chars)
+    //   - leaderMobile: string (required, 10-15 chars)
+    //   - institution: string (required, 3-120 chars)
+    //   - trackId: string (required, in ['linguaverse', 'abilityx', 'roots', 'flowforge', 'iotverse'])
+    //   - projectTitle: string (required, 6-140 chars)
+    //   - abstract: string (required, 20-1000 chars)
+    //   - memberCount: int (required, 1-4)
+    //   - createdAt: string or timestamp (required, immutable)
+    //   - ieeeMemberId: string (optional, max 50 chars)
+    //   - mentorName: string (optional, max 80 chars)
+    //   - inclusionImpact: string (optional, max 1000 chars)
+    //   - status: string (optional, in ['Submitted', 'Under Review', 'Shortlisted', 'Rejected', 'Finalist'])
+    //   - members: list (optional, max 10 members)
+    //   - leaderMobileVerified: bool (optional)
+    //   - reviewNotes: string (optional, max 2000 chars)
+    //
+    // Collection: participants
+    // Document ID: uid (Firebase Auth UID of the participant)
+    // Fields:
+    //   - fullName: string
+    //   - email: string
+    //   - mobile: string (optional)
+    //   - whatsapp: string (optional)
+    //   - department: string (optional)
+    //   - institution: string (optional)
+    //   - profileComplete: bool (optional)
+    //   - createdAt: string (optional)
+    //
+    // Collection: auditLogs
+    // Document ID: logId
+    // Fields:
+    //   - Event and audit metadata
+    //
+    // ===============================================================
+
+    // ===============================================================
+    // Helper Functions
+    // ===============================================================
 
     function isSignedIn() {
       return request.auth != null;
     }
 
+    function isCoordinator() {
+      return isSignedIn() && request.auth.token.role == 'coordinator';
+    }
+
+    function isAdmin() {
+      return isSignedIn() && request.auth.token.admin == true;
+    }
+
+    function isCoordinatorOrAdmin() {
+      return isCoordinator() || isAdmin();
+    }
+
     function isValidId(id) {
-      return id is string && id.size() >= 1 && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
-    }
-
-    function incoming() {
-      return request.resource.data;
-    }
-
-    function existing() {
-      return resource.data;
+      return id is string && id.size() >= 1 && id.size() <= 128 && id.matches('^[a-zA-Z0-9_-]+$');
     }
 
     function isValidRegistration(data) {
@@ -28,6 +83,7 @@ service cloud.firestore {
         'teamName',
         'leaderName',
         'leaderEmail',
+        'leaderMobile',
         'institution',
         'trackId',
         'projectTitle',
@@ -41,45 +97,111 @@ service cloud.firestore {
         'teamName',
         'leaderName',
         'leaderEmail',
+        'leaderMobile',
         'institution',
-        'ieeeMemberId',
         'trackId',
         'projectTitle',
         'abstract',
         'memberCount',
-        'createdAt'
+        'createdAt',
+        'ieeeMemberId',
+        'mentorName',
+        'inclusionImpact',
+        'status',
+        'members',
+        'leaderMobileVerified',
+        'reviewNotes',
+        'updatedAt',
+        'registrationFee',
+        'paymentStatus',
+        'paymentScreenshotUrl',
+        'paymentScreenshotName',
+        'paymentScreenshotSize',
+        'paymentUploadedAt',
+        'paymentVerifiedAt',
+        'paymentVerifiedBy',
+        'paymentRejectedAt',
+        'paymentRejectedBy',
+        'paymentRejectionReason'
       ]) &&
       data.id is string && data.id.size() >= 1 && data.id.size() <= 128 &&
-      data.ownerId is string && data.ownerId == request.auth.uid && data.ownerId.size() <= 128 &&
+      data.ownerId is string && data.ownerId.size() >= 1 && data.ownerId.size() <= 128 &&
       data.teamName is string && data.teamName.size() >= 3 && data.teamName.size() <= 80 &&
       data.leaderName is string && data.leaderName.size() >= 2 && data.leaderName.size() <= 80 &&
       data.leaderEmail is string && data.leaderEmail.size() >= 5 && data.leaderEmail.size() <= 120 &&
+      data.leaderMobile is string && data.leaderMobile.size() >= 10 && data.leaderMobile.size() <= 15 &&
       data.institution is string && data.institution.size() >= 3 && data.institution.size() <= 120 &&
       data.trackId is string && data.trackId in ['linguaverse', 'abilityx', 'roots', 'flowforge', 'iotverse'] &&
       data.projectTitle is string && data.projectTitle.size() >= 6 && data.projectTitle.size() <= 140 &&
       data.abstract is string && data.abstract.size() >= 20 && data.abstract.size() <= 1000 &&
       data.memberCount is int && data.memberCount >= 1 && data.memberCount <= 4 &&
-      data.createdAt is string && data.createdAt.size() <= 40;
+      ((data.createdAt is string && data.createdAt.size() >= 1 && data.createdAt.size() <= 50) || data.createdAt is timestamp) &&
+      (!('ieeeMemberId' in data) || (data.ieeeMemberId is string && data.ieeeMemberId.size() <= 50)) &&
+      (!('mentorName' in data) || (data.mentorName is string && data.mentorName.size() <= 80)) &&
+      (!('inclusionImpact' in data) || (data.inclusionImpact is string && data.inclusionImpact.size() <= 1000)) &&
+      (!('status' in data) || (data.status is string && data.status in ['Submitted', 'Under Review', 'Shortlisted', 'Rejected', 'Finalist'])) &&
+      (!('members' in data) || (data.members is list && data.members.size() <= 10)) &&
+      (!('leaderMobileVerified' in data) || data.leaderMobileVerified is bool) &&
+      (!('reviewNotes' in data) || (data.reviewNotes is string && data.reviewNotes.size() <= 2000)) &&
+      (!('updatedAt' in data) || (data.updatedAt is string && data.updatedAt.size() <= 60)) &&
+      (!('registrationFee' in data) || (data.registrationFee is int && data.registrationFee in [150, 300, 450, 500])) &&
+      (!('paymentStatus' in data) || (data.paymentStatus is string && data.paymentStatus in ['PENDING', 'VERIFIED', 'REJECTED'])) &&
+      (!('paymentScreenshotUrl' in data) || (data.paymentScreenshotUrl is string && data.paymentScreenshotUrl.size() <= 2000000)) &&
+      (!('paymentScreenshotName' in data) || (data.paymentScreenshotName is string && data.paymentScreenshotName.size() <= 256)) &&
+      (!('paymentScreenshotSize' in data) || (data.paymentScreenshotSize is int && data.paymentScreenshotSize <= 10485760)) &&
+      (!('paymentUploadedAt' in data) || (data.paymentUploadedAt is string && data.paymentUploadedAt.size() <= 50)) &&
+      (!('paymentVerifiedAt' in data) || (data.paymentVerifiedAt is string && data.paymentVerifiedAt.size() <= 50)) &&
+      (!('paymentVerifiedBy' in data) || (data.paymentVerifiedBy is string && data.paymentVerifiedBy.size() <= 100)) &&
+      (!('paymentRejectedAt' in data) || (data.paymentRejectedAt is string && data.paymentRejectedAt.size() <= 50)) &&
+      (!('paymentRejectedBy' in data) || (data.paymentRejectedBy is string && data.paymentRejectedBy.size() <= 100)) &&
+      (!('paymentRejectionReason' in data) || (data.paymentRejectionReason is string && data.paymentRejectionReason.size() <= 1000));
+    }
+
+    // ===============================================================
+    // Rules
+    // ===============================================================
+
+    match /participants/{uid} {
+      allow read: if isCoordinatorOrAdmin() || (isSignedIn() && request.auth.uid == uid);
+      allow create, update: if (isSignedIn() && request.auth.uid == uid) ||
+        (uid.size() >= 3 && request.resource.data.email is string && request.resource.data.mobile is string);
+    }
+
+    match /identities/{identityKey} {
+      allow read: if true;
+      allow create: if (isSignedIn() || request.resource.data.registrationId is string) &&
+        !exists(/databases/$(database)/documents/identities/$(identityKey)) &&
+        request.resource.data.type in ['email', 'mobile'] &&
+        request.resource.data.value is string &&
+        request.resource.data.registrationId is string;
+      allow update, delete: if isCoordinatorOrAdmin();
+    }
+
+    match /config/payment_qr {
+      allow read: if true;
+      allow write: if isCoordinatorOrAdmin() || (request.resource.data.qrUrl is string && request.resource.data.updatedBy is string);
     }
 
     match /registrations/{registrationId} {
-      allow get: if isSignedIn() && isValidId(registrationId) && existing().ownerId == request.auth.uid;
-      allow list: if isSignedIn() && resource.data.ownerId == request.auth.uid;
-      allow create: if isSignedIn() &&
-        request.auth.token.email_verified == true &&
-        isValidId(registrationId) &&
-        incoming().id == registrationId &&
-        isValidRegistration(incoming());
-      allow update: if isSignedIn() &&
-        request.auth.token.email_verified == true &&
-        isValidId(registrationId) &&
-        isValidRegistration(incoming()) &&
-        existing().ownerId == request.auth.uid &&
-        incoming().ownerId == existing().ownerId &&
-        incoming().id == existing().id &&
-        incoming().createdAt == existing().createdAt &&
-        incoming().diff(existing()).affectedKeys().hasOnly(['teamName', 'projectTitle', 'abstract', 'memberCount', 'trackId']);
-      allow delete: if isSignedIn() && isValidId(registrationId) && existing().ownerId == request.auth.uid;
+      allow get, list: if true;
+
+      allow create: if isValidId(registrationId) &&
+        request.resource.data.id == registrationId &&
+        isValidRegistration(request.resource.data);
+
+      allow update: if isValidId(registrationId) &&
+        isValidRegistration(request.resource.data) &&
+        request.resource.data.id == resource.data.id &&
+        request.resource.data.createdAt == resource.data.createdAt &&
+        request.resource.data.ownerId == resource.data.ownerId;
+
+      allow delete: if false;
+    }
+
+    match /auditLogs/{logId} {
+      allow create: if isSignedIn();
+      allow read: if isSignedIn() && isCoordinatorOrAdmin();
+      allow update, delete: if false;
     }
   }
 }

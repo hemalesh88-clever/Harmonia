@@ -10,12 +10,17 @@ import {
 import {
   getFirestore,
   doc,
+  getDoc,
   getDocFromServer,
   setDoc,
+  updateDoc,
   collection,
   query,
   where,
   onSnapshot,
+  getDocs,
+  addDoc,
+  limit,
 } from 'firebase/firestore';
 import firebaseAppletConfig from '../../firebase-applet-config.json';
 
@@ -172,10 +177,15 @@ export {
   firebaseSignOut,
   onAuthStateChanged,
   doc,
+  getDoc,
   setDoc,
+  updateDoc,
   collection,
   query,
   where,
   onSnapshot,
 };
+export { getDocs } from 'firebase/firestore';
+export { addDoc } from 'firebase/firestore';
+export { limit } from 'firebase/firestore';
 export type { User };

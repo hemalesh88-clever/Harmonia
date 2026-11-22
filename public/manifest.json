@@ -1,0 +1,22 @@
+{
+  "short_name": "HARMONIA",
+  "name": "HARMONIA — International Hackathon Portal",
+  "icons": [
+    {
+      "src": "/assets/aistudio/harmonia_logo.webp",
+      "type": "image/webp",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/assets/aistudio/harmonia_logo.webp",
+      "type": "image/webp",
+      "sizes": "512x512"
+    }
+  ],
+  "start_url": "/",
+  "background_color": "#F5D6B4",
+  "theme_color": "#13354B",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "scope": "/"
+}

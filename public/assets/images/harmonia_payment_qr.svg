@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 480" width="100%" height="100%" style="background:#ffffff;border-radius:24px;font-family:system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;">
+  <!-- Header Branding -->
+  <rect width="400" height="72" fill="#13354B" rx="24 24 0 0"/>
+  <text x="200" y="28" fill="#FFFFFF" font-size="11" font-weight="700" text-anchor="middle" letter-spacing="1">RAJALAKSHMI INSTITUTE OF TECHNOLOGY</text>
+  <text x="200" y="46" fill="#F4D03F" font-size="14" font-weight="900" text-anchor="middle" letter-spacing="0.5">HARMONIA 2027</text>
+  <text x="200" y="62" fill="#E2E8F0" font-size="9" font-weight="600" text-anchor="middle">Official Hackathon Registration Payment</text>
+
+  <!-- QR Frame -->
+  <rect x="35" y="88" width="330" height="330" rx="16" fill="#F8FAFC" stroke="#E2E8F0" stroke-width="2"/>
+
+  <!-- QR Pattern (Clean Crisp Vector QR Matrix) -->
+  <g fill="#172347">
+    <!-- Top-Left Finder Pattern -->
+    <rect x="55" y="108" width="70" height="70" rx="10" fill="#172347"/>
+    <rect x="67" y="120" width="46" height="46" rx="6" fill="#FFFFFF"/>
+    <rect x="77" y="130" width="26" height="26" rx="4" fill="#6B1FE0"/>
+
+    <!-- Top-Right Finder Pattern -->
+    <rect x="275" y="108" width="70" height="70" rx="10" fill="#172347"/>
+    <rect x="287" y="120" width="46" height="46" rx="6" fill="#FFFFFF"/>
+    <rect x="297" y="130" width="26" height="26" rx="4" fill="#6B1FE0"/>
+
+    <!-- Bottom-Left Finder Pattern -->
+    <rect x="55" y="328" width="70" height="70" rx="10" fill="#172347"/>
+    <rect x="67" y="340" width="46" height="46" rx="6" fill="#FFFFFF"/>
+    <rect x="77" y="350" width="26" height="26" rx="4" fill="#6B1FE0"/>
+
+    <!-- Data Elements Grid -->
+    <rect x="140" y="108" width="14" height="14" rx="2"/>
+    <rect x="164" y="108" width="14" height="14" rx="2"/>
+    <rect x="188" y="108" width="14" height="14" rx="2"/>
+    <rect x="222" y="108" width="14" height="14" rx="2"/>
+    <rect x="246" y="108" width="14" height="14" rx="2"/>
+
+    <rect x="140" y="132" width="14" height="14" rx="2"/>
+    <rect x="174" y="132" width="28" height="14" rx="2"/>
+    <rect x="222" y="132" width="14" height="14" rx="2"/>
+
+    <rect x="140" y="156" width="28" height="14" rx="2"/>
+    <rect x="188" y="156" width="14" height="14" rx="2"/>
+    <rect x="212" y="156" width="24" height="14" rx="2"/>
+    <rect x="246" y="156" width="14" height="14" rx="2"/>
+
+    <!-- Middle Horizontal Timing -->
+    <rect x="55" y="200" width="14" height="14" rx="2"/>
+    <rect x="79" y="200" width="14" height="14" rx="2"/>
+    <rect x="103" y="200" width="14" height="14" rx="2"/>
+    <rect x="127" y="200" width="14" height="14" rx="2"/>
+    <rect x="151" y="200" width="14" height="14" rx="2"/>
+    <rect x="175" y="200" width="14" height="14" rx="2"/>
+    <rect x="199" y="200" width="14" height="14" rx="2"/>
+    <rect x="223" y="200" width="14" height="14" rx="2"/>
+    <rect x="247" y="200" width="14" height="14" rx="2"/>
+    <rect x="271" y="200" width="14" height="14" rx="2"/>
+    <rect x="295" y="200" width="14" height="14" rx="2"/>
+    <rect x="319" y="200" width="14" height="14" rx="2"/>
+
+    <!-- Center Brand Emblem -->
+    <rect x="160" y="222" width="80" height="60" rx="12" fill="#FFFFFF" stroke="#6B1FE0" stroke-width="3"/>
+    <text x="200" y="247" fill="#6B1FE0" font-size="11" font-weight="900" text-anchor="middle" letter-spacing="0.5">UPI PAY</text>
+    <text x="200" y="265" fill="#172347" font-size="9" font-weight="800" text-anchor="middle">HARMONIA</text>
+
+    <!-- Lower Section Data -->
+    <rect x="140" y="300" width="24" height="14" rx="2"/>
+    <rect x="174" y="300" width="14" height="14" rx="2"/>
+    <rect x="198" y="300" width="28" height="14" rx="2"/>
+    <rect x="236" y="300" width="14" height="14" rx="2"/>
+    <rect x="260" y="300" width="14" height="14" rx="2"/>
+    <rect x="284" y="300" width="28" height="14" rx="2"/>
+    <rect x="322" y="300" width="14" height="14" rx="2"/>
+
+    <rect x="140" y="324" width="14" height="14" rx="2"/>
+    <rect x="164" y="324" width="28" height="14" rx="2"/>
+    <rect x="202" y="324" width="14" height="14" rx="2"/>
+    <rect x="226" y="324" width="24" height="14" rx="2"/>
+    <rect x="260" y="324" width="14" height="14" rx="2"/>
+    <rect x="284" y="324" width="14" height="14" rx="2"/>
+    <rect x="308" y="324" width="28" height="14" rx="2"/>
+
+    <rect x="140" y="348" width="28" height="14" rx="2"/>
+    <rect x="178" y="348" width="14" height="14" rx="2"/>
+    <rect x="202" y="348" width="24" height="14" rx="2"/>
+    <rect x="236" y="348" width="14" height="14" rx="2"/>
+    <rect x="260" y="348" width="24" height="14" rx="2"/>
+    <rect x="294" y="348" width="14" height="14" rx="2"/>
+    <rect x="318" y="348" width="18" height="14" rx="2"/>
+
+    <rect x="140" y="372" width="14" height="14" rx="2"/>
+    <rect x="164" y="372" width="14" height="14" rx="2"/>
+    <rect x="188" y="372" width="28" height="14" rx="2"/>
+    <rect x="226" y="372" width="14" height="14" rx="2"/>
+    <rect x="250" y="372" width="14" height="14" rx="2"/>
+    <rect x="274" y="372" width="24" height="14" rx="2"/>
+    <rect x="308" y="372" width="28" height="14" rx="2"/>
+  </g>
+
+  <!-- Footer Information -->
+  <text x="200" y="438" fill="#13354B" font-size="12" font-weight="800" text-anchor="middle">UPI ID: harmonia2027@icici</text>
+  <text x="200" y="456" fill="#64748B" font-size="10" font-weight="600" text-anchor="middle">Accepted on Google Pay, PhonePe, Paytm, BHIM &amp; Banking Apps</text>
+</svg>

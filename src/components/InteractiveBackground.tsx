@@ -12,8 +12,8 @@ import {
 } from 'lucide-react';
 
 interface InteractiveBackgroundProps {
-  mouseX: number;
-  mouseY: number;
+  mouseX?: number;
+  mouseY?: number;
   variant?: 'sunset' | 'light';
 }
 
@@ -89,11 +89,52 @@ const FIREFLY_PARTICLES = [
   { posClass: 'bottom-[16%] left-[38%]', size: 'h-3 w-3', delay: 0.9, dur: 6.4 },
 ];
 
-export const InteractiveBackground: React.FC<InteractiveBackgroundProps> = ({
-  mouseX,
-  mouseY,
+export const InteractiveBackground: React.FC<InteractiveBackgroundProps> = React.memo(({
+  mouseX: propMouseX,
+  mouseY: propMouseY,
   variant = 'sunset',
 }) => {
+  const [internalMouse, setInternalMouse] = React.useState({ x: 0, y: 0 });
+  const [reducedMotion, setReducedMotion] = React.useState(false);
+
+  React.useEffect(() => {
+    if (typeof window === 'undefined') return;
+
+    // Check for prefers-reduced-motion
+    const mediaQuery = window.matchMedia('(prefers-reduced-motion: reduce)');
+    setReducedMotion(mediaQuery.matches);
+    const motionHandler = (e: MediaQueryListEvent) => setReducedMotion(e.matches);
+    mediaQuery.addEventListener('change', motionHandler);
+
+    if (mediaQuery.matches) return () => mediaQuery.removeEventListener('change', motionHandler);
+
+    // If parent passed explicit coordinates, use them; otherwise attach self-contained passive listener
+    if (propMouseX !== undefined && propMouseY !== undefined) {
+      return () => mediaQuery.removeEventListener('change', motionHandler);
+    }
+
+    let ticking = false;
+    const handleMove = (e: MouseEvent) => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          const normX = (e.clientX / window.innerWidth - 0.5) * 2;
+          const normY = (e.clientY / window.innerHeight - 0.5) * 2;
+          setInternalMouse({ x: normX, y: normY });
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    window.addEventListener('mousemove', handleMove, { passive: true });
+    return () => {
+      mediaQuery.removeEventListener('change', motionHandler);
+      window.removeEventListener('mousemove', handleMove);
+    };
+  }, [propMouseX, propMouseY]);
+
+  const mouseX = propMouseX !== undefined ? propMouseX : (reducedMotion ? 0 : internalMouse.x);
+  const mouseY = propMouseY !== undefined ? propMouseY : (reducedMotion ? 0 : internalMouse.y);
   return (
     <div
       aria-hidden="true"
@@ -107,11 +148,10 @@ export const InteractiveBackground: React.FC<InteractiveBackgroundProps> = ({
           y: mouseY * 70,
         }}
         transition={{ type: 'spring', stiffness: 45, damping: 25 }}
-        className={`absolute left-1/3 top-1/4 h-[440px] w-[440px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-3xl ${
-          variant === 'light'
+        className={`absolute left-1/3 top-1/4 h-[440px] w-[440px] -translate-x-1/2 -translate-y-1/2 rounded-full blur-3xl ${variant === 'light'
             ? 'bg-gradient-to-tr from-purple-300/25 via-amber-200/25 to-pink-200/20'
             : 'bg-gradient-to-tr from-amber-300/35 via-purple-400/25 to-orange-300/30'
-        }`}
+          }`}
       />
 
       {/* Counter-Moving Secondary Ambient Orb */}
@@ -281,4 +321,4 @@ export const InteractiveBackground: React.FC<InteractiveBackgroundProps> = ({
       </motion.div>
     </div>
   );
-};
+});
